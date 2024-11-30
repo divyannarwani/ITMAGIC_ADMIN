@@ -18,7 +18,7 @@ function Logo() {
     formData.append('logo', logo[0]);
 
     try {
-      await fetch("https://itmagic-backend.onrender.com/api/v1/addHomePageLogo", {
+      await fetch("https://itmagic-backend.vercel.app/api/v1/addHomePageLogo", {
         method: "POST",
         body: formData
       });
@@ -37,7 +37,7 @@ function Logo() {
 
     setLoading(true);
     try {
-      const response = await fetch("https://itmagic-backend.onrender.com/api/v1/getHomeLogo");
+      const response = await fetch("https://itmagic-backend.vercel.app/api/v1/getHomeLogo");
       const result = await response.json();
       setTableData(result.data);
     } catch (error) {
@@ -52,7 +52,7 @@ function Logo() {
     const confirmDelete = window.confirm("Are you sure you want to delete this item?");
     if (confirmDelete) {
       try {
-        const response = await axios.delete(`https://itmagic-backend.onrender.com/api/v1/deleteLogo/${id}`);
+        const response = await axios.delete(`https://itmagic-backend.vercel.app/api/v1/deleteLogo/${id}`);
         if (response.status === 200) {
           alert('Item deleted successfully');
           fetchTableData()

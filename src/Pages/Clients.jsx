@@ -19,7 +19,7 @@ function Clients() {
     formData.append('image', image[0]);
 
     try {
-      await fetch("https://itmagic-backend.onrender.com/api/v1/addClient", {
+      await fetch("https://itmagic-backend.vercel.app/api/v1/addClient", {
         method: "POST",
         body: formData
       });
@@ -37,7 +37,7 @@ function Clients() {
 
   const getCategories = async () => {
     try {
-      const response = await fetch("https://itmagic-backend.onrender.com/api/v1/getClientCategory");
+      const response = await fetch("https://itmagic-backend.vercel.app/api/v1/getClientCategory");
       const result = await response.json();
 
       setCategories(result.data.map((category) => category.name));
@@ -54,7 +54,7 @@ function Clients() {
 
     setLoading(true);
     try {
-      const response = await fetch("https://itmagic-backend.onrender.com/api/v1/getClients");
+      const response = await fetch("https://itmagic-backend.vercel.app/api/v1/getClients");
       const result = await response.json();
       console.log(result.data)
       setTableData(result.data);
@@ -69,7 +69,7 @@ function Clients() {
     const confirmDelete = window.confirm("Are you sure you want to delete this item?");
     if (confirmDelete){
       try {
-        const response = await axios.delete(`https://itmagic-backend.onrender.com/api/v1/deleteClient/${id}`);
+        const response = await axios.delete(`https://itmagic-backend.vercel.app/api/v1/deleteClient/${id}`);
         if (response.status === 200){
           alert("Item Deleted Successfully.")
           fetchTableData()

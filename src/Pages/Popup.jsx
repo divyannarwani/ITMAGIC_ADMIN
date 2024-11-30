@@ -20,7 +20,7 @@ function Popup() {
     formData.append('image', image[0]);
 
     try {
-      await fetch("https://itmagic-backend.onrender.com/api/v1/editPopup", {
+      await fetch("https://itmagic-backend.vercel.app/api/v1/editPopup", {
         method: "PATCH",
         body: formData
       });
@@ -41,7 +41,7 @@ function Popup() {
 
     setLoading(true);
     try {
-      const response = await fetch("https://itmagic-backend.onrender.com/api/v1/getPopup");
+      const response = await fetch("https://itmagic-backend.vercel.app/api/v1/getPopup");
       const result = await response.json();
       setTableData(result.data);
     } catch (error) {
