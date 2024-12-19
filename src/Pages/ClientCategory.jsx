@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import BASE_URL from '../constant'
+
 
 function ClientCategory() {
   
@@ -14,7 +16,7 @@ function ClientCategory() {
     formData.append('name', name);
 
     try {
-      await fetch("https://itmagic-backend.vercel.app/api/v1/addClientCategory", {
+      await fetch(`${BASE_URL}/addClientCategory`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json", 
@@ -33,7 +35,7 @@ function ClientCategory() {
 
   const fetchTableData = async () => {
     try {
-      const response = await fetch("https://itmagic-backend.vercel.app/api/v1/getClientCategory");
+      const response = await fetch(`${BASE_URL}/getClientCategory`);
       const result = await response.json();
       setTableData(result.data);
     } catch (error) {
@@ -45,7 +47,7 @@ function ClientCategory() {
     const confirmDelete = window.confirm("Are you sure you want to delete this item?");
     if (confirmDelete){
       try {
-        const response = await axios.delete(`https://itmagic-backend.vercel.app/api/v1/deleteCategory/${id}`);
+        const response = await axios.delete(`${BASE_URL}/deleteCategory/${id}`);
         if (response.status === 200){
           alert("Item Deleted Successfully.")
           fetchTableData()

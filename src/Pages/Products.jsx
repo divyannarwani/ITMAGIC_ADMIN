@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import BASE_URL from '../constant.js'
 
 function Products() {
 
@@ -15,7 +16,7 @@ function Products() {
     formData.append("image", image[0]);
 
     try {
-      await fetch("https://itmagic-backend.vercel.app/api/v1/addProduct", {
+      await fetch(`${BASE_URL}/addProduct`, {
         method:"POST",
         body: formData
       })
@@ -33,7 +34,7 @@ function Products() {
 
   const fetchTableData = async () => {
     try {
-      const response = await fetch("https://itmagic-backend.vercel.app/api/v1/getProducts")
+      const response = await fetch(`${BASE_URL}/getProducts`)
       const result = await response.json()
       setTableData(result.data);
     } catch (error) {
@@ -46,7 +47,7 @@ function Products() {
     const confirmDelete = window.confirm("Are you sure you want to delete this item?");
     if (confirmDelete){
       try {
-        const response = await axios.delete(`https://itmagic-backend.vercel.app/api/v1/deleteProduct/${id}`);
+        const response = await axios.delete(`${BASE_URL}/deleteProduct/${id}`);
         if (response.status === 200){
           alert("Item deleted successfully.")
           fetchTableData()

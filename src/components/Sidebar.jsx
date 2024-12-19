@@ -1,12 +1,16 @@
 import React from 'react'
 import { Outlet, NavLink, Link } from 'react-router-dom';
 import Dropdown from './Dropdown'
+import BASE_URL from '../constant.js'
 
 // icons import
 import { AiFillProduct } from "react-icons/ai";
 
 
 function Sidebar() {
+
+    
+    
 
     const options = [
         { text: 'option 1' },
